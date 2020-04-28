@@ -1,4 +1,5 @@
 import discord
+import sys
 
 token = sys.argv[1]
 
