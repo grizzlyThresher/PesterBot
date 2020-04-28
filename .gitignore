@@ -1,1 +1,2 @@
-src/bot-env
+/src/config
+/src/node_modules
