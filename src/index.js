@@ -2,11 +2,14 @@ const config = require('./config/config.json');
 const eris = require('eris');
 
 
+// Grabs the bot's token from the associated config file
 const token = config.token;
 
 // Create a Client instance with our bot token.
-
 const bot = new eris.Client(token);
+
+// Used to keep track of whether or not we are currently pestering a user.
+let isPestering = false;
 
 
 
@@ -19,13 +22,14 @@ bot.on('ready', () => {
 // this event will fire and we will check if the bot was mentioned.
 // If it was, the bot will attempt to respond with "Present".
 bot.on('messageCreate', async (msg) => {
+
    const botWasMentioned = msg.mentions.find(
        mentionedUser => mentionedUser.id === bot.user.id
    );
 
    if (botWasMentioned) {
        try {
-           await msg.channel.createMessage('PesterBot here! Who do you need to bug?');
+           await msg.channel.createMessage('PesterBot here! Who do you need to bug <@'+ msg.author.id +'>?');
        } catch (err) {
            // There are various reasons why sending a message may fail.
            // The API might time out or choke and return a 5xx status,
