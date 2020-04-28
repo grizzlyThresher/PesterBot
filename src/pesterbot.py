@@ -1,5 +1,7 @@
 import discord
 
+token = sys.argv[1]
+
 client = discord.Client()
 
 
@@ -13,6 +15,6 @@ async def on_message(message):
         return
 
     if message.content.startswith('--pester'):
-        await message.channel.send('Hello! I am PesterBot! To get someone\'s attention, just type --pester @(user_to_be_pestered)')
+        await message.channel.send('Hello @' + message.author.name + message.author.discriminator + '! I am PesterBot! To get someone\'s attention, just type --pester @(user_to_be_pestered)')
 
-client.run("NzAzMjM5NTMyNjc3NTYyNDI5.XqLtrA.sMELcrtMFnDn6Vwe5eWeUHncWRA")
+client.run(token)
